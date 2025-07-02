@@ -24,26 +24,35 @@ jobs:
       FAST: False
     steps:
       - uses: actions/checkout@v4
+      
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.9'
+      
       - uses: browser-actions/setup-firefox@v1
+      
       - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get -y install curl pulseaudio ffmpeg xvfb
+      
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
       - name: Install geckodriver
-        run: bash ./sources/get_geckodriver.sh
+        uses: browser-actions/setup-geckodriver@latest
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Run recorder
         run: |
           sudo mkdir -p /output
           sudo chmod 777 /output
           xvfb-run --auto-servernum bash ./sources/driver.sh
+      
       - name: Upload recording
         uses: actions/upload-artifact@v4
         with:
