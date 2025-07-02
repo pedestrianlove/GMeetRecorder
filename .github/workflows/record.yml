@@ -10,10 +10,18 @@ jobs:
   record:
     runs-on: ubuntu-latest
     env:
-      BACKEND: 'gmail'
+      BACKEND: gmail
       EMAIL: ${{ secrets.EMAIL }}
       PASSWORD: ${{ secrets.PASSWORD }}
       MEET_URL: ${{ secrets.MEET_URL }}
+      VIDEO_NAME: video
+      OUTPUT_DIR: .
+      MAX_DURATION: 14400
+      MIN_DURATION: 1800
+      ASK_JOIN: True
+      FRAC_TO_EXIT: 0.90
+      RESOLUTION: 1920x1080
+      FAST: False
     steps:
       - uses: actions/checkout@v4
       - name: Setup Python
