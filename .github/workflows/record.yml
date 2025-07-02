@@ -43,7 +43,7 @@ jobs:
         run: |
           sudo mkdir -p /output
           sudo chmod 777 /output
-          xvfb-run bash ./sources/driver.sh
+          xvfb-run --auto-servernum bash ./sources/driver.sh
       - name: Upload recording
         uses: actions/upload-artifact@v4
         with:
