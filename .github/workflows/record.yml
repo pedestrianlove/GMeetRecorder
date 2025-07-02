@@ -10,6 +10,7 @@ jobs:
   record:
     runs-on: ubuntu-latest
     env:
+      BACKEND: 'gmail'
       EMAIL: ${{ secrets.EMAIL }}
       PASSWORD: ${{ secrets.PASSWORD }}
       MEET_URL: ${{ secrets.MEET_URL }}
