@@ -14,9 +14,9 @@ jobs:
       PASSWORD: ${{ secrets.PASSWORD }}
       MEET_URL: ${{ secrets.MEET_URL }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.9'
       - name: Install system dependencies
@@ -35,7 +35,7 @@ jobs:
           sudo chmod 777 /output
           bash ./sources/driver.sh
       - name: Upload recording
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: recording
           path: /output/
